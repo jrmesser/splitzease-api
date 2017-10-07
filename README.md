@@ -8,26 +8,26 @@ Transactions are structured as follows:
 ```javascript
 {
 transactionID: transID,
-id: ObjectId,
-date: DateNow,
-userID: userID, //matches firebase ID used for authentication
+id: <String>,
+date: <DateTime>,
+userID: <String>, //matches firebase ID used for authentication
 party: [{ //defines the party the split is among
-	personId: 1
-	phone: 1231231234,
-	total: 13.45 },
-	{ personId: 2
-	phone: 2131231234,
-	total: 34.45 }
+	personId: <Integer>
+	phone: 1231231234 <Integer>
+	total: 13.45 <Float>},
+	{ personId: <Integer>
+	phone: <Integer>,
+	total: <Float> }
 ]
 items: [{ //defines the items on the receipt
-	name: “Doughnut”,
-	price: 8.00,
-	person: [1, 3] //defines the members of the party the item total is to be split evenly among
+	name: <String>,
+	price: <Float>,
+	person: <Array <Integer>> //defines the members of the party the item total is to be split evenly among
 },
 {
-	name: “Pasta”,
-	price: 15.00,
-	person: [1]
+	name: <String>,
+	price: <Float>,
+	person: <Array <Integer>>
 }]
 }
 ```
