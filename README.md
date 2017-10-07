@@ -7,17 +7,20 @@ It has one type of object: a transaction.
 Transactions are structured as follows:
 ```javascript
 {
-transactionID: transID,
+transactionID: <String>,
 id: <String>,
 date: <DateTime>,
 userID: <String>, //matches firebase ID used for authentication
 party: [{ //defines the party the split is among
-	personId: <Integer>
-	phone: 1231231234 <Integer>
-	total: 13.45 <Float>},
-	{ personId: <Integer>
+	personId: <Integer>,
 	phone: <Integer>,
-	total: <Float> }
+	total: <Float>
+},
+{
+    personId: <Integer>,
+	phone: <Integer>,
+	total: <Float> 
+}
 ]
 items: [{ //defines the items on the receipt
 	name: <String>,
