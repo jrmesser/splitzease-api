@@ -9,14 +9,14 @@ const transactionSchema = new mongoose.Schema({
     },
     userID: {type: String, required: true},//matches firebase ID used for authentication
     party: [{ //defines the party the split is among
-        personId: {type: Number, required: true},
-        phone: {type: Number, required: true},
+        personId: {type: Number},
+        phone: {type: Number},
         total: Number
     }],
     items: [{ //defines the items on the receipt
         name: {type: String, required: true},
         price: {type: Number, required: true},
-        person: {type:[Number], required: true}
+        person: {type:[Number]}
     }]
 });
 
