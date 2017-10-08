@@ -21,7 +21,7 @@ module.exports = inputTransaction => {
                 delete runningTotals[person.personId];//clean up dict
             }
         });
-        if (Object.keys(runningTotals) != []) {
+        if (Object.keys(runningTotals)[0] != undefined) {
             throw 'items were split outside the party';
             return false;
         }
