@@ -18,7 +18,7 @@ module.exports = inputTransaction => {
             }
             else{ 
                 person.total = runningTotals[person.personId];
-                runningTotals[person.personId] = undefined; //clean up dict
+                delete runningTotals[person.personId];//clean up dict
             }
         });
         if (Object.keys(runningTotals) != []) {
