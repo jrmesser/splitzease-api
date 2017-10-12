@@ -8,7 +8,7 @@ const transactionRoutes = require('./controllers/transaction.js');
 const userRoutes = require('./controllers/user.js');
 
 //create a connection to mongoDB
-mongoose.connect('mongodb://localhost/splitzease', {useMongoClient: true});
+mongoose.connect('mongodb://mongouser:password1@ds117615.mlab.com:17615/heroku_c3ksw7k3/splitzease', {useMongoClient: true});
 
 //create an express app
 var app = express();
