@@ -1,8 +1,6 @@
 const mongoose = require("mongoose");
 
 const transactionSchema = new mongoose.Schema({
-    transactionID: String,
-    id: {type: String, required: true},
     date: {
         type: Date,
         default: Date.now
@@ -17,7 +15,16 @@ const transactionSchema = new mongoose.Schema({
         name: {type: String, required: true},
         price: {type: Number, required: true},
         person: {type:[Number]}
-    }]
+    }],
+    ocrResult: [
+        [ String, Number ]
+    ],
+    tax: Number,
+    total: Number,
+    tipPer: Number,
+    tip: Number,
+    perPerson: Number,
+    splitEven: {type: Boolean, required: true, default: false}
 });
 
 const Transaction = mongoose.model('Transaction', transactionSchema);

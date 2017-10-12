@@ -10,17 +10,31 @@ module.exports = app => {
             }
         });
     });
-    app.post('/transaction/:id', (req, res) => {
+    app.post('/transaction/', (req, res) => {
+        if (!(req.body && req.body.ocrResult && req.body.userID && req.body.total && req.body.myNumber)) {
+            res.json("Request body did not have one of: ocrResult, userID, total, or myNumber").status(400);
+        }
         let newTransaction = {};
-        newTransaction.id = req.params.id;
+        newTransaction.ocrResult = req.body.ocrResult;
         newTransaction.userID = req.body.userID;
-        newTransaction.items = parseOCR(req.body.OCRText).map((c,i,l) => {
+        newTransaction.items = req.body.ocrResult.map((c,i,l) => {
             let a = {};
             a.name = c[0] === '' ? "Item not found" : c[0];
             a.price = c[1] === '' ? "0.00" : c[1];
             return a;
         });
-        newTransaction.party = [];
+        newTransaction.party = req.body.myNumber.map((c, i, a) => {
+            return {
+                personId: parseInt(c),
+                phone: parseInt(c),
+                total: req.body.perPerson ? parseFloat(req.body.perPerson) : 0.00
+            };
+        });
+        newTransaction.tax = parseFloat(req.body.tax);
+        newTransaction.total = parseFloat(req.body.total);
+        newTransaction.tipPer = parseFloat(req.body.tipPer);
+        newTransaction.tip = parseFloat(req.body.tip);
+        newTransaction.perPerson = parseFloat(req.body.perPerson);
         Transaction.create(newTransaction, (err, newTrans) => {
             if (err) {res.json(err).status(500);}
             else {
@@ -42,7 +56,7 @@ module.exports = app => {
     });
 
     app.delete('/transaction/:id', (req, res) => {
-        res.json("Nope!").status(500);
+        res.json("Nope!").status(401);
     });
     return app;
 };

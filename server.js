@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 
 //import modules from this project
 const transactionRoutes = require('./controllers/transaction.js');
+const userRoutes = require('./controllers/user.js');
 
 //create a connection to mongoDB
 mongoose.connect('mongodb://localhost/splitzease', {useMongoClient: true});
@@ -23,6 +24,8 @@ app.use(bodyParser.json({ type: 'application/json' }));
 
 //use transaction routes
 transactionRoutes(app);
+//use user routes
+userRoutes(app);
 
 //open the connection
 const db = mongoose.connection;

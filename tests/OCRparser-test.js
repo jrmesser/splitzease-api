@@ -5,7 +5,7 @@ const testString = "Cold Beverage 2.80 |\nCold Beverage 2.40 |\nLunch Small Salm
 const desiredOutput = [["Cold Beverage", "2.80"],["Cold Beverage", "2.40"],["Lunch Small Salmon", "12.90"],["Lunch Sa Inon", "14.50"],["Lunch Cup Chix Cha/w", "2.00"],["Lunch Fettuccine Carrabba","10.99"],["Lunch Small Salmon", "12.90"],["Lunch Strawberry Salad","11.50"],["Lunch In Chix Bryan","12.70"],["Lunch House Salad Add On", "2.00"],["Uessert Rusa","1.20"],["Dessert Rusa","1.20"],["Sogno di Cloccolata", "1.90"],["Sogno di Cloccolata", "7.90"]];
 
 const parsedString = OCRparser(testString);
-
+console.log(parsedString);
 let result = true;
 
 for (let i=0; i<parsedString.length && result; i++) {
